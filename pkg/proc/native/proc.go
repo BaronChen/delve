@@ -3,6 +3,7 @@ package native
 import (
 	"fmt"
 	"go/ast"
+	"log"
 	"runtime"
 	"sync"
 
@@ -95,6 +96,7 @@ func (dbp *Process) ClearCheckpoint(int) error { return proc.ErrNotRecorded }
 
 // Detach from the process being debugged, optionally killing it.
 func (dbp *Process) Detach(kill bool) (err error) {
+	log.Printf("Kill value: %v", kill)
 	if dbp.exited {
 		return nil
 	}
